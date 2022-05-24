@@ -62,10 +62,6 @@ const Card = ({
     setInitialRender(false);
   }, [expanded]);
 
-  // useEffect(() => {
-  //
-  // }, [])
-
   setTimeout(() => {
     setCardClass(cardClass.replace("hide", ""));
   }, number * 150);
