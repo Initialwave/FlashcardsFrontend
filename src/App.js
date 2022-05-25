@@ -12,7 +12,7 @@ function App() {
   const tempData = useRef([]);
 
   useEffect(() => {
-    fetch("/questions/getAll")
+    fetch("http://localhost:8080/questions/getAll")
       .then(r => r.json())
       .then(json => {
         let text = JSON.stringify(json).replaceAll(
