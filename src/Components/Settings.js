@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import menuLogo from "../pics/menu.svg";
-import { TextField } from "@mui/material";
+import SearchBar from "./SearchBar";
+
 
 const Settings = ({ doFilter }) => {
   const [menu, setMenu] = useState(true);
@@ -8,12 +9,14 @@ const Settings = ({ doFilter }) => {
     document.documentElement.clientWidth
   );
   const [checkedBoxes, setCheckedBoxes] = useState([]);
-  const [inputText, setInputText] = useState("");
-  let inputHandler = e => {
-    //convert input text to lower case
-    var lowerCase = e.target.value.toLowerCase();
-    setInputText(lowerCase);
-  };
+
+  useEffect(() => {
+    
+    if(SearchBar.searchTerm){
+      doFilter(SearchBar.searchTerm);
+    }
+    
+  });
 
   let checkboxChangeHandler = e => {
     let selection = e.target.id;
@@ -376,8 +379,8 @@ const Settings = ({ doFilter }) => {
       </>
       <>
         <div className="main">
-          <h1>React Search</h1>
-          <div className="search">
+          <h1>Search</h1>
+          {/* <div className="search">
             <TextField
               id="outlined-basic"
               onChange={inputHandler}
@@ -385,8 +388,9 @@ const Settings = ({ doFilter }) => {
               fullWidth
               label="Search"
             />
-          </div>
-          <data input={inputText} />
+            {SearchBar()}
+          </div> */}
+          {/* <data input={inputText} /> */}
         </div>
       </>
     </>

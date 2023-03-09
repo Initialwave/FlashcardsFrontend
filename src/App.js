@@ -4,6 +4,7 @@ import Settings from "./Components/Settings";
 import "./css/app.css";
 import "./css/toolbar.css";
 import fetcher from "./Components/Services";
+import SearchBar from "./Components/SearchBar";
 
 function App() {
   const [data, setData] = useState(null);
@@ -11,6 +12,7 @@ function App() {
   const [em, setEm] = useState(0);
   const [refresh, setRefresh] = useState(false);
   const tempData = useRef([]);
+  
 
   useEffect(() => {
     fetcher()
@@ -54,6 +56,10 @@ function App() {
             contains = true;
             break;
           }
+          if (e["question"].includes(array[i]) || e["answer"].includes(array[i]) || e["category"].includes(array[i]) || e["subCategory"].includes(array[i])){
+            contains = true;
+            break;
+          }
         }
         return contains;
       });
@@ -77,6 +83,9 @@ function App() {
   return (
     <>
       <Settings doFilter={array => filterData(array)} />
+      <SearchBar doFilter={array => filterData(array)} />
+
+      
       <div
         id="emDiv"
         style={{
