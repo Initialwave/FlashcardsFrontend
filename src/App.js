@@ -3,6 +3,7 @@ import CardsDisplay from "./Components/CardsDisplay";
 import Settings from "./Components/Settings";
 import "./css/app.css";
 import "./css/toolbar.css";
+import fetcher from "./Components/Services";
 
 function App() {
   const [data, setData] = useState(null);
@@ -12,8 +13,7 @@ function App() {
   const tempData = useRef([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/questions/getAll")
-      .then(r => r.json())
+    fetcher()
       .then(json => {
         let text = JSON.stringify(json).replaceAll(
           "<textarea",

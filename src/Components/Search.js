@@ -1,15 +1,26 @@
-import { React, useState } from 'react'
-import data from "./questions.json"
+import React, { useState } from "react";
+import fetcher from "./Services";
 
-function search(props) {
-    return (
-        <ul>
-            {data.map((item) => (
-                <li key={item.id}>{item.text}</li>
-            ))}
-        </ul>
-    )
+function SearchBar(props) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearch = () => {
+    fetcher()
+      .then((data) => {
+        // handle the search results here
+      });
+  };
+
+  return (
+    <div>
+      <input type="text" onChange={handleInputChange} />
+      <button onClick={handleSearch}>Search</button>
+    </div>
+  );
 }
 
-export default search
-
+export default SearchBar;
