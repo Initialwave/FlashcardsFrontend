@@ -14,6 +14,15 @@
   transition-duration: 1s;
   font-family: "Old Antic", sans-serif;
 }
+h1 {
+  margin: 10px;
+  font-size: 40px;
+  color: rgb(1, 1, 59);
+}
+
+.search {
+  width: 30%;
+}
 
 h3 {
   max-height: 25px;
@@ -91,6 +100,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  -ms-flex-order: var();
   align-items: center;
 }
 
